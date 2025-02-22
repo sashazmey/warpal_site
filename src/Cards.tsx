@@ -40,14 +40,29 @@ export default function Сards() {
         <div className="container">
             {myArray.map((card) => {
                 return (
-                    <div className={card.intVal % 2 === 0 ? 'card green_bg' : 'card red_bg'} >
-                        <div className="card__title">{card.title}</div>
-                        <div className="card__subtitle">{card.subtitle}: {card.intVal}</div>
-                    </div>
+                    card.intVal % 2 === 0
+                        ? <GreenCard  {...card} />
+                        : <RedCard  {...card} />
                 )
             })}
         </div>
     );
 }
 
-//style={{ backgroundColor: (card.intVal % 2 === 0) ? 'green' : 'red' }}
+function GreenCard({ title, subtitle, intVal }: SomeDataDto) {
+    return (
+        <div className="card green_bg">
+            <div className="card__title">{title}</div>
+            <div className="card__subtitle">{subtitle}: {intVal}</div>
+        </div>
+    );
+}
+function RedCard({ title, subtitle, intVal }: SomeDataDto) { 
+    return (
+        <div className="card red_bg">
+            <div className="card__title">{title}</div>
+            <div className="card__subtitle">{subtitle}: {intVal}</div>
+        </div>
+    );
+}
+
