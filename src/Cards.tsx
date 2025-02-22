@@ -40,7 +40,7 @@ export default function Сards() {
         <div className="container">
             {myArray.map((card) => {
                 return (
-                    <div className="card">
+                    <div className="card" style={{backgroundColor: (card.intVal%2===0) ? 'green' : 'red'}}>
                         <div className="card__title">{card.title}</div>
                         <div className="card__subtitle">{card.subtitle}: {card.intVal}</div>
                     </div>
