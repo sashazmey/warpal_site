@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 
+
 interface SomeDataDto {
     title: string,  // Большие буквы
     subtitle: string, //{subtitle}:{intVal}
@@ -35,14 +36,14 @@ const myArray: SomeDataDto[] = [
     },
 ]
 
-export default function Сards() {
+export default function Cards() {
     return (
         <div className="container">
             {myArray.map((card) => {
                 return (
                     card.intVal % 2 === 0
-                        ? <GreenCard  {...card} />
-                        : <RedCard  {...card} />
+                        ? <GreenCard title={card.title} subtitle={card.subtitle} intVal={card.intVal} />
+                        : <RedCard title={card.title} subtitle={card.subtitle} intVal={card.intVal} />
                 )
             })}
         </div>
@@ -57,7 +58,7 @@ function GreenCard({ title, subtitle, intVal }: SomeDataDto) {
         </div>
     );
 }
-function RedCard({ title, subtitle, intVal }: SomeDataDto) { 
+function RedCard({ title, subtitle, intVal }: SomeDataDto) {
     return (
         <div className="card red_bg">
             <div className="card__title">{title}</div>
