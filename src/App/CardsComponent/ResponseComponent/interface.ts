@@ -3,10 +3,6 @@ export interface ElementDto {
     data: string
 }
 
-export interface ElementsContainerDto {
-    elements: ElementDto[]
-}
-
 export interface ResponseDto {
     title: string,
     subtitle: string,
@@ -17,3 +13,12 @@ export interface DataContainerResponseDto {
     response: ResponseDto[]
 }
 
+export interface ElementsContainerProps {
+    elements: ElementDto[]
+}
+
+export interface ResponseProps {
+    title: string,
+    subtitle: string,
+    elements: ElementDto[]
+}
