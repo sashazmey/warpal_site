@@ -1,16 +1,22 @@
-import {ElementsContainerDto} from "../interface"
+import { ElementsContainerProps } from "../interface";
+import '../Response.scss';
+import IsAllElementsDataEmpty from "./IsAllElementsDataEmptyComponent/IsAllElementsDataEmpty";
+import IsElementsHaveSomeData from "./IsElementsHaveSomeDataComponent/IsElementsHaveSomeData";
 
-export default function CardElement({elements}: ElementsContainerDto) {
+
+export default function CardElement({ elements }: ElementsContainerProps) {
     return (
-        elements.every((element) => element.data === "") ?
-            <div className='yellow-square'></div>
-            :
-            elements.map((element) => (
-                <div className="element-card">
-                    {element.data ? (<div className="element-card__content">{element.title}: {element.data}</div>
-                    ) : (
-                        <div className='red-square'></div>)}
-                </div>
-            ))
+        <>
+            <IsAllElementsDataEmpty
+                elements={elements} />
+                
+            {!IsAllElementsDataEmpty({ elements }) &&
+                <IsElementsHaveSomeData
+                    elements={elements} />
+            }
+        </>
     )
 }
+
+
+
