@@ -8,11 +8,13 @@ export default function CardElement({ elements }: ElementsContainerProps) {
     return (
         <>
             <IsAllElementsDataEmpty
-                elements={elements} />
-                
+                elements={elements}
+            />
+
             {!IsAllElementsDataEmpty({ elements }) &&
                 <IsElementsHaveSomeData
-                    elements={elements} />
+                    elements={elements}
+                />
             }
         </>
     )

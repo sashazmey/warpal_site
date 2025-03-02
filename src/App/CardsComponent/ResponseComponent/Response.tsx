@@ -3,7 +3,6 @@ import { DataContainerResponseDto } from './interface';
 import ResponseInfo from './ResponseInfoComponent/ResponseInfo';
 import CardElement from './CardElementComponent/CardElement';
 
-
 export const myResponse: DataContainerResponseDto = {
     response: [
         {
@@ -55,13 +54,6 @@ export const myResponse: DataContainerResponseDto = {
     ]
 }
 
-// Для каждого response мы рисуем контейнер, в контейнере:
-// 1) Заговок и подзаголовок, двоеточие, число элементов в elements
-// 2) Каждый из elements это тоже карточка, с зеленым фоном, в которой написано title двоеточие data, если data не пустая. Если data пустая, то рисуется просто красный квадратик
-// 3) Если все из elements имеют пустую дату, вместо карточки с зеленым фоном рисуется квадратик с желтым фоном
-// 4) Разложить по компонентам
-
-
 export default function Response() {
     return (
         myResponse.response.map((response) => {
@@ -71,12 +63,13 @@ export default function Response() {
                         title={response.title}
                         subtitle={response.subtitle}
                         elements={response.elements}
-                    />                   
-                    <CardElement elements={response.elements} />
+                    />
+                    <CardElement
+                        elements={response.elements}
+                    />
                 </div>
             )
         })
     )
 }
 
-// elements.every((elem) => elem >= 10);
