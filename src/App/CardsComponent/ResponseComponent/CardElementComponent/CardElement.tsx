@@ -19,9 +19,10 @@ function isAllElementsDataEmpty(elements: { data: string }[]): boolean {
 
 function isElementHaveSomeData(element: { title: string, data: string }) {
     if (element.data !== "") {
-        return (<div className="element-card">
-            {element.title}: {element.data}
-        </div>);
+        return (
+            <div className="element-card">
+                {element.title}: {element.data}
+            </div>);
     }
     return <RedSquare />;
 }
