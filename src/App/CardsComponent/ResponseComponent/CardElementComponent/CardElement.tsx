@@ -1,13 +1,18 @@
-import { ElementsContainerProps } from './CardElementProps';
 import '../Response.scss';
+import { ElementDto } from "../interface"
 
+interface CardElementProps {
+    elements: ElementDto[]
+}
 
-export default function CardElement({ elements }: ElementsContainerProps) {
+export default function CardElement({ elements }: CardElementProps) {
     return (
         <>
             {isAllElementsDataEmpty(elements)
                 ? <YellowSquare />
-                : elementsHaveSomeData(elements)
+                : <CardElementContent
+                    elements={elements}
+                />
             }
         </>
     )
@@ -17,18 +22,17 @@ function isAllElementsDataEmpty(elements: { data: string }[]): boolean {
     return elements.every((element) => element.data === "")
 }
 
-function isElementHaveSomeData(element: { title: string, data: string }) {
-    if (element.data !== "") {
-        return (
-            <div className="element-card">
-                {element.title}: {element.data}
-            </div>);
-    }
-    return <RedSquare />;
-}
-
-function elementsHaveSomeData(elements: { title: string, data: string }[]) {
-    return elements.map(isElementHaveSomeData);
+function CardElementContent({ elements }: CardElementProps) {
+    return (
+        elements.map((element) => {
+            if (element.data !== "") {
+                return (<div className="element-card">
+                    {element.title}: {element.data}
+                </div>)
+            }
+            return <RedSquare />
+        })
+    )
 }
 
 function RedSquare() {
