@@ -32,7 +32,7 @@ export const CreateOrderComponent = () => {
                     />
                     <TextField
                         variant='outlined'
-                        label='Reference:'
+                        label='Reference: max character:100'
                         value={data.referenceValue || ''}
                         onChange={events.handleReference}
                         error={data.referenceNotValid}
@@ -45,6 +45,7 @@ export const CreateOrderComponent = () => {
                             value={data.paidWithinValue}
                             onChange={events.handlePaidWithin}
                             error={data.paidWithinNotValid}
+                            helperText={data.paidWithinNotValid ? 'Please enter a number greater than zero.' : ''}
                         />
                     }
                     <Checkbox

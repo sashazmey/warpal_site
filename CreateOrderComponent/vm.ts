@@ -34,6 +34,7 @@ export function CreateOrderVm() {
         },
 
         handleButtonState: () => {
+            
             setIsDisabled(false)
         },
 
@@ -57,7 +58,7 @@ export function CreateOrderVm() {
 
         handlePaidWithin: (event) => {
             setPaidWithinValue(event.target.value);
-            if (event.target.value == 0) {
+            if (event.target.value > 0 ) {
                 setPaidWithinNotValid(false)
             } else {
                 setPaidWithinNotValid(true)
